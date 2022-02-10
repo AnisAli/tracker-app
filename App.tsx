@@ -9,17 +9,20 @@ import SignupScreen from './src/screens/SignupScreen';
 import TrackListScreen from './src/screens/TrackListScreen';
 import TrackCreateScreen from './src/screens/TrackCreateScreen';
 import TrackDetailScreen from './src/screens/TrackDetailScreen';
+import { Provider, useSelector } from 'react-redux';
+import store from './src/store';
 
 const MainFlowTab = createBottomTabNavigator();
 const LoginStack = createNativeStackNavigator();
 const TrackStack = createNativeStackNavigator();
 
 
-export default function App() {
+const App = () => {
   let isSignedIn= null;
+  const authState = useSelector((state: any)=> state.auth);
   return (
     <NavigationContainer>
-       {  isSignedIn == null ? ( 
+       {  authState.token === null ? ( 
           <LoginStack.Navigator>
             <LoginStack.Screen name="Signup" component={SignupScreen} />
             <LoginStack.Screen name="Signin" component={SigninScreen} />
@@ -44,4 +47,10 @@ export default function App() {
 
     </NavigationContainer>
   );
+}
+
+export default () => {
+  return  <Provider store={store}>
+             <App />
+          </Provider> 
 }
