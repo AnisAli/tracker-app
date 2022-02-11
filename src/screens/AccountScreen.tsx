@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text } from  'react-native';
 import { Headline , TextInput, Button } from 'react-native-paper';
 import { useDispatch } from 'react-redux';
-import { signOut } from '../features/auth/authSlice';
+import { signOutUser } from '../features/auth/authSlice';
 
 const AccountScreen = () => {
     const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const AccountScreen = () => {
         <>
             <Text> AccountScreen </Text>
             <Button 
-                 onPress={()=>dispatch(signOut({}))}   
+                 onPress={()=>dispatch(signOutUser())}   
                  icon="logout"
                  mode="contained">
                     Sign out

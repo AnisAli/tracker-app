@@ -11,6 +11,8 @@ import TrackCreateScreen from './src/screens/TrackCreateScreen';
 import TrackDetailScreen from './src/screens/TrackDetailScreen';
 import { Provider, useSelector } from 'react-redux';
 import store from './src/store';
+import { navigationRef } from './src/navigationRef';
+import SplashScreen from './src/screens/SplashScreen';
 
 const MainFlowTab = createBottomTabNavigator();
 const LoginStack = createNativeStackNavigator();
@@ -21,9 +23,10 @@ const App = () => {
   let isSignedIn= null;
   const authState = useSelector((state: any)=> state.auth);
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
        {  authState.token === null ? ( 
           <LoginStack.Navigator>
+            <LoginStack.Screen name ="Splash" component={SplashScreen} />
             <LoginStack.Screen name="Signup" component={SignupScreen} />
             <LoginStack.Screen name="Signin" component={SigninScreen} />
           </LoginStack.Navigator>
@@ -43,14 +46,12 @@ const App = () => {
       </MainFlowTab.Navigator>
        )
       }
-      
-
     </NavigationContainer>
   );
 }
 
 export default () => {
   return  <Provider store={store}>
-             <App />
+             <App  />
           </Provider> 
 }

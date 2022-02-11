@@ -4,7 +4,7 @@ import React from 'react';
  import { Formik } from 'formik';
 import Spacer from './Spacer';
  
- const SignUpForm = ({onSubmit}: any) => (
+ const SignUpForm = ({onSubmit, buttonText}: any) => (
    <Formik
      initialValues={{ email: '', password: '' }}
      onSubmit={values => {
@@ -37,7 +37,7 @@ import Spacer from './Spacer';
                  onPress={handleSubmit}   
                  icon="login"
                  mode="contained">
-                    Sign Up
+                   {buttonText}
                 </Button>
             </Spacer>
 
