@@ -1,20 +1,27 @@
 import React from 'react';
-import { StyleSheet, Text } from  'react-native';
+import { SafeAreaView, StyleSheet, Text } from  'react-native';
 import { Headline , TextInput, Button } from 'react-native-paper';
 import { useDispatch } from 'react-redux';
+import Spacer from '../components/Spacer';
 import { signOutUser } from '../features/auth/authSlice';
 
 const AccountScreen = () => {
     const dispatch = useDispatch();
     return (
         <>
-            <Text> AccountScreen </Text>
-            <Button 
-                 onPress={()=>dispatch(signOutUser())}   
-                 icon="logout"
-                 mode="contained">
-                    Sign out
-                </Button>
+         <SafeAreaView>
+            <Spacer>
+                <Headline>Account Screen</Headline>
+            </Spacer>
+            <Spacer>
+                <Button 
+                    onPress={()=>dispatch(signOutUser())}   
+                    icon="logout"
+                    mode="contained">
+                        Sign out
+                    </Button>
+            </Spacer>
+          </SafeAreaView>    
         </>
     );
 }

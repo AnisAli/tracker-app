@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity } from  'react-native';
+import { StyleSheet, TouchableOpacity, Image } from  'react-native';
 import { Headline , TextInput, Button } from 'react-native-paper';
 import Spacer from '../components/Spacer';
 import { Text, SafeAreaView } from 'react-native';
@@ -35,6 +35,7 @@ const SigninScreen = ({navigation}: any) => {
         <>
         <SafeAreaView style={styles.container}>
             <Spacer>
+           
                 <Headline>Sign In for Tracker</Headline>
             </Spacer>
             { authState.error ? <Text style={styles.error}> {authState.error} </Text> :  null }
@@ -58,6 +59,11 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       marginTop: 150
+    },
+    image: {
+       
+        width: "100%",
+        height: "40%",
     },
     text: {
       fontSize: 25,

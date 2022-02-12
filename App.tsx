@@ -26,23 +26,23 @@ const App = () => {
     <NavigationContainer ref={navigationRef}>
        {  authState.token === null ? ( 
           <LoginStack.Navigator>
-            <LoginStack.Screen name ="Splash" component={SplashScreen} />
-            <LoginStack.Screen name="Signup" component={SignupScreen} />
-            <LoginStack.Screen name="Signin" component={SigninScreen} />
+            <LoginStack.Screen options={{headerShown: false}} name ="Splash" component={SplashScreen} />
+            <LoginStack.Screen options={{headerShown: false}} name="Signup" component={SignupScreen} />
+            <LoginStack.Screen options={{headerShown: false}} name="Signin" component={SigninScreen} />
           </LoginStack.Navigator>
        ): 
        (
          <MainFlowTab.Navigator>
-          <MainFlowTab.Screen name="TrackCreate" component={TrackCreateScreen} />
-          <MainFlowTab.Screen name="Account" component={AccountScreen} />
-          <MainFlowTab.Screen name="TrackListFlow">
+          <MainFlowTab.Screen options={{headerShown: false}} name="TrackListFlow">
           {() => (
             <TrackStack.Navigator>
-              <TrackStack.Screen  name="TrackList" component={TrackListScreen} />
-              <TrackStack.Screen name="TrackDetail" component={TrackDetailScreen} />
+              <TrackStack.Screen options={{headerShown: false}} name="TrackList" component={TrackListScreen} />
+              <TrackStack.Screen options={{headerShown: false}}name="TrackDetail" component={TrackDetailScreen} />
             </TrackStack.Navigator>
           )}
         </MainFlowTab.Screen>
+        <MainFlowTab.Screen options={{headerShown: false, title: "Create"}} name="TrackCreate" component={TrackCreateScreen} />
+        <MainFlowTab.Screen options={{headerShown: false}} name="Account" component={AccountScreen} />
       </MainFlowTab.Navigator>
        )
       }

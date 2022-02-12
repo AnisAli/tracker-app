@@ -1,11 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text } from  'react-native';
+import { StyleSheet, Text, SafeAreaView } from  'react-native';
 
 
 const TrackDetailScreen = () => {
     return (
         <>
-            <Text> TrackDetailScreen </Text>
+            <SafeAreaView>
+             <Text> TrackDetailScreen </Text>
+            </SafeAreaView>
         </>
     );
 }
