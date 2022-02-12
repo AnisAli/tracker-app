@@ -4,34 +4,15 @@ import { StyleSheet, Text, SafeAreaView } from  'react-native';
 import { Headline } from 'react-native-paper';
 import Map from '../components/MapView';
 import Spacer from '../components/Spacer';
-import { requestForegroundPermissionsAsync , watchPositionAsync, Accuracy } from 'expo-location';
-import { catchError } from 'rxjs';
+import useLocation from '../hooks/useLocation';
 
 const TrackCreateScreen = () => {
-    const [err, setErr] =  useState(null);
-
-    const startWatching = async ()=>{
-        try{
-            const { granted} = await requestForegroundPermissionsAsync();
-            if (!granted){
-                throw new Error('Location permission not grated');
-            }
-            await watchPositionAsync({
-                accuracy: Accuracy.BestForNavigation,
-                timeInterval: 1000,
-                distanceInterval: 10
-            }, (location)=> {
-                console.log(location);
-            })
-
-        } catch(e:any) {
-            setErr(e);
-        }
-    }
     
-    useEffect(()=>{
-        startWatching();
-    }, []);
+    const locationEvent = (location: any) => {
+        console.log('newLocation', location);
+    }
+
+    const [ err ] = useLocation(locationEvent);
 
     return (
         <>
@@ -41,8 +22,7 @@ const TrackCreateScreen = () => {
             </Spacer>
             <Map />
             { err ? <Text style={styles.error}> Please enable location services</Text> : null }
-               
-               
+ 
             </SafeAreaView>
         </>
     );
